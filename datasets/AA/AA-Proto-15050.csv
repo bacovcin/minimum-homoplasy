@@ -1,0 +1,154 @@
+,InheritedValue,Weighting,Semitic,Egyptian,Berber,Chadic,Cushitic,Omotic
+*m,m,50,m,m,m,m,m,m
+*n,n,50,n,n,n,n,n,n
+*p,p,50,p,p,f,p,p,p
+*t,t,50,t,t,t,t,t,t
+*c,c,50,s,s,z,c,c,N/A
+*č,č,50,ṯ,s,s,č,č,š
+*ĉ,ĉ,50,ŝ,š,z,ĉ,ĉ,č
+*k,k,50,k,k,k,k,k,k
+*q,q,50,ḫ,ḫ,k,k,k,k
+*b,b,50,b,b,b,b,b,b
+*d,d,50,d,ṭ,d,d,d,d
+*ʒ,ʒ,50,z,z,z,ʒ,ʒ,ʒ
+*ǯ,ǯ,50,ḏ,z,z,ǯ,ǯ,č
+*g,g,50,g,g,g,g,g,g
+*ṭ,ṭ,50,ṭ,ṭ,ḍ,ṭ,ṭ,ṭ
+*c̣,c̣,50,ṣ,č̣,ẓ,c̣,c̣,c̣
+*č̣,č̣,50,ṱ,č̣,ẓ,č̣,č̣,c̣
+*ĉ̣,ĉ̣,50,ĉ̣,č̣,ḍ,ĉ̣,ĉ̣,č̣
+*ḳ,ḳ,50,q,q,q,ḳ,ḳ,ḳ
+*ḳ2,ḳ,50,q,q,ɣ,ḳ,ḳ,ḳ
+*q̣,q̣,50,ḫ,ḫ,ḫ,ḳ,ḳ,ḳ
+*q̣2,q̣,50,ḫ,ḫ,ɣ,N/A,N/A,N/A
+*f,f,50,p,f,f,p,p,p
+*s,s,50,š,s,s,s,s,s
+*ŝ,ŝ,50,ŝ,š,š,ẑ,ŝ,š
+*ḫ,ḫ,50,ḫ,ḫ,ɣ,ɣ,ḫ,N/A
+*ḥ,ḥ,50,ḥ,ḥ,0,ḥ,ḥ,N/A
+*h,h,50,h,h,h,ḥ,h,h
+*w,w,50,w,w,w,w,w,w
+*y,y,50,y,y,y,y,y,y
+*ɣ,ɣ,50,ɣ,ʿ,ɣ,ɦ,ɣ,N/A
+*r,r,50,r,r,r,r,r,r
+*l,l,50,l,l,l,l,l,l
+*ʾ,ʾ,50,ʾ,ʾ,0,ʾ,ʾ,ʾ
+*ʿ,ʿ,50,ʿ,ʿ,0,ʿ,ʿ,0
+Tone,No,50,No,No,No,Tone,Pitch Accent,Pitch Accent
+Dental Root constraint,Unclear,50,Yes,Yes,Yes,No,No,No
+Sibilant Root constraint,NA,50,Yes,Yes,Yes,No,No,No
+1st Sg. Independent Pronoun,ʾan,50,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan
+1st Sg. Independent Pronoun Augment,None,50,-āku,-āku,-āku,None,-i,None
+2nd Sg. Independent Pronoun 1,Unclear,50,ʾant,ʾant,ku/ki,ku/ki,ʾant,ana
+2nd Sg. Independent Pronoun 2,Unclear,50,ʾant,ku/ki,ku/ki,ku/ki,ʾant,ana
+3rd Sg. Independent Pronoun,sV,50,sV,ʾant,ʾant,sV,sV,nV
+1st Pl. Independent Pronoun,nV,50,nV,nV,nV,mV,nV,nV
+2nd Pl. Independent Pronoun 1,Unclear,50,ʾant,ʾant,ku/ki,ku/ki,ʾant,ʾant
+2nd Pl. Independent Pronoun 2,Enclear,50,ʾant,ku/ki,ku/ki,ku/ki,ʾant,ʾant
+3rd Pl. Independent Pronoun,sV,50,sV,ʾant,ʾant,sV,sV,sV
+1st Sg. Suffix Pronoun 1,-y,50,-y,-y,-y,-y,-y,0
+1st Sg. Suffix Pronoun 2,-n,50,-n,-y,-y,-n,-y,0
+2nd Sg. Suffix Pronoun,-k,50,-k,-k,-k,-k,-k,0
+3rd Sg. Suffix Pronoun M.,-s,50,-s,-s,-s,-s,-s,0
+1st Pl. Suffix Pronoun,-n,50,-n,-n,-n,-m,-n,0
+2nd Pl. Suffix Pronoun,-kn,50,-kn,-kn,-k,-k,-kn,0
+3rd Pl. Suffix Pronoun,-sn,50,-sn,-sn,-sn,-s,-sn,0
+Suffix Conjugation,Unclear,50,Yes,Yes,Yes,No,No,No
+1st Sg. Suffix Conjugation,-ku,50,-ku,-ku,-ku,N/A,N/A,N/A
+2nd Sg. Suffix Conjugation,-tV,50,-tV,-tV,-tV,N/A,N/A,N/A
+3rd Sg. M. Suffix Conjugation,Unclear,50,0,-u,0,N/A,N/A,N/A
+3rd Sg. F. Suffix Conjugation,Unclear,50,-t,-t,0,N/A,N/A,N/A
+1st Pl Suffix Conjugation,-n,50,-n,-n,-n,N/A,N/A,N/A
+2nd Pl. Suffix Conjugation,-tn,50,-tn,-tn,-m,N/A,N/A,N/A
+3rd Pl. M. Suffix Conjugation,Unclear,50,-ū,ū,-n,N/A,N/A,N/A
+3rd Pl. F. Suffix Conjugation,Unclear,50,-ā,-ū,-nt,N/A,N/A,N/A
+Prefix Conjugation,Yes,50,Yes,No,Yes,No,Yes,Yes
+1st Sg. Prefix Conjugation,ʾa-,50,ʾa-,N/A,ʾa-,ʾa-,ʾa-,ʾa-
+2nd Sg. Prefix Conjugation,ta-,50,ta-,N/A,ta-,ka-,ta-,ta-
+3rd Sg. M. Prefix Conjugation,ya-,50,ya-,N/A,ya-,ya-,ya-,ya-
+3rd Sg. F. Prefix Conjugation,ta-,50,ta-,N/A,ta-,ta-,ta-,ya-
+1st Pl. Prefix Conjugation,na-,50,na-,N/A,na-,mu-,na-,na-
+2nd Pl. Prefix Conjugation,ta-,50,ta-,N/A,ta-,ka-,ta-,ta-
+3rd Pl. M. Prefix Conjugtion,ya-,50,ya-,N/A,0,sun-,ya-,ya-
+3rd Pl. F. Prefix Conjugation,ta-,50,ta-,N/A,0,sun-,ya-,ta-
+Periphrastic Verb,No,50,No,No,No,Yes,Yes,Yes
+Auxiliary Univerbation,None,50,None,None,None,No,Yes,Yes
+S-Stem,Yes,50,Yes,Yes,Yes,Yes,Yes,Yes
+S-Stem Position,Preifx,50,Prefix,Prefix,Prefix,Suffix,Prefix,Suffix
+S-Stem Position 2,Prefix,50,Prefix,Prefix,Prefix,Suffix,Suffix,Suffix
+T-Stem,Yes,50,Yes,Yes,Yes,Yes,Yes,No
+T-Stem Position,Prefix,50,Infix,Prefix,Prefix,Suffix,Prefix,N/A
+T-Stem Position 2,Prefix,50,Infix,Prefix,Prefix,Suffix,Suffix,N/A
+N-Stem,Yes,50,Yes,No,Yes,No,Yes,No
+N-Stem Position,Prefix,50,Prefix,N/A,Prefix,N/A,Prefix,N/A
+N-Stem Position 2,Prefix,50,Prefix,N/A,Prefix,N/A,Prefix,N/A
+Root Shape,Unclear,50,3,3,3,2,2,2
+Root Shape 2,Unlear,50,3,3,3,N/A,3,N/A
+Case Inflection,Unclear,50,Yes,No,Yes,No,Yes,No
+Word Order,Unclear,50,VSO,VSO,VSO,SVO,SOV,SOV
+Agent M Prefix,Yes,50,Yes,Yes,Yes,Yes,No,No
+Imperfective Stem,N-Infix,50,Geminate,Geminate,Geminate,Reduplication,N-Infix,0
+Nisba,No,50,Yes,Yes,No,No,No,No
+king1,-1,1,NA,by,bḳr,by,bḳr,NA
+king2,-1,1,car,car,NA,car,NA,NA
+king3,-1,1,mlk,NA,NA,mlk,NA,NA
+bone1,-1,1,NA,NA,NA,fal,fal,NA
+bone2,-1,1,NA,NA,NA,far,far,NA
+bone3,-1,1,ač̣em,NA,NA,ač̣em,NA,NA
+bone4,-1,1,ḳac̣,NA,NA,NA,ḳac̣,NA
+bone5,-1,1,NA,ḳas,ḳas,ḳas,ḳas,ḳas
+blood1,-1,1,NA,NA,NA,bel,bel,NA
+blood2,-1,1,dam,NA,dam,dam,dam,dam
+blood3,-1,1,NA,ʒin,NA,ʒin,NA,NA
+night1,-1,1,amas,NA,NA,amas,amas,NA
+night2,-1,1,dugan,NA,NA,dugan,dugan,NA
+night3,-1,1,ḫaĉ,NA,NA,ḫaĉ,ḫaĉ,NA
+night4,-1,1,ḫadar,NA,NA,ḫadar,NA,NA
+night5,-1,1,NA,ḳenaḥ,NA,ḳenaḥ,NA,NA
+night6,-1,1,NA,kenum,NA,kenum,NA,NA
+night7,-1,1,NA,sisa',NA,sisa',NA,NA
+foot1,-1,1,NA,NA,NA,acin,acin,NA
+foot2,-1,1,ĉa'p,NA,NA,suḳul,ĉa'p,suḳul
+foot3,-1,1,NA,rad,NA,NA,rad,rad
+foo4,-1,1,NA,NA,NA,tab,tab,NA
+foot5,-1,1,NA,NA,NA,ya'w,ya'w,NA
+heart1,-1,1,NA,udur,NA,udur,udur,NA
+heart2,-1,1,gawf,NA,NA,gawf,NA,NA
+heart3,-1,1,NA,NA,NA,haǯin,haǯin,NA
+heart4,-1,1,NA,NA,NA,mun,mun,NA
+heart5,-1,1,ḳabul,NA,NA,ḳabul,NA,NA
+heart6,-1,1,lib,lib,lib,lib,lib,lib
+heart7,-1,1,puwad,NA,NA,puwad,NA,NA
+heart8,-1,1,NA,NA,waǯan,waǯan,waǯan,waǯan
+sun1,-1,1,NA,imn,NA,imn,NA,NA
+sun2,-1,1,NA,bʒ,NA,bʒ,bʒ,NA
+sun3,-1,1,NA,bʿ,NA,bʿ,NA,NA
+sun4,-1,1,NA,daw,NA,daw,NA,NA
+sun5,-1,1,NA,ʿaǯ,NA,ʿaǯ,ʿaǯ,NA
+sun6,-1,1,kar,NA,NA,kar,NA,NA
+sun7,-1,1,NA,raʿ,NA,raʿ,NA,NA
+sun8,-1,1,ŝam,ŝam,NA,ŝam,NA,NA
+man1,-1,1,inas,ki',inas,ki',inas,NA
+man2,-1,1,us,ʿiǯ,ʿiǯ,us,us,NA
+man3,-1,1,ba'il,NA,NA,ba'il,ba'il,NA
+L1,-1,1,bar,NA,bar,bar,bar,NA
+L2,-1,1,bin,hey,NA,bin,hey,NA
+L3,-1,1,NA,NA,da',da',da',NA
+L4,-1,1,NA,NA,dad,dad,dad,NA
+L5,-1,1,NA,NA,NA,dar,dar,NA
+L6,-1,1,gaw,NA,NA,gaw,gaw,NA
+L7,-1,1,ɣulum,NA,NA,ɣulum,NA,NA
+L8,-1,1,NA,NA,NA,hulim,hulim,NA
+L9,-1,1,NA,NA,NA,ḥay,ḥaw,NA
+L10,-1,1,NA,lat,NA,lat,NA,NA
+L11,-1,1,ramk,ramk,mayan,mayan,mayan,mayan
+L12,-1,1,mar,mar,NA,mar,mar,NA
+L13,-1,1,NA,NA,NA,mu',mu',mu'
+L14,-1,1,nafar,NA,NA,nafar,NA,NA
+L15,-1,1,nagaĉ,NA,NA,nagaĉ,nagaĉ,nagaĉ
+L16,-1,1,NA,NA,NA,nam,nam,nam
+L17,-1,1,NA,ninay,NA,ninay,NA,ninay
+L18,-1,1,nus,nus,NA,nus,nus,nus
+L19,-1,1,NA,reḫ,NA,reḫ,NA,NA
+L20,-1,1,NA,waĉ,NA,waĉ,NA,NA
+L21,-1,1,NA,ʒa,NA,ʒa,NA,NA

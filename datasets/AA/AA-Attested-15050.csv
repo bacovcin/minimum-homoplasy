@@ -1,0 +1,132 @@
+,InheritedValue,Weighting,Akkadian,Hebrew,Arabic,Ge'ez,Oromo,Beja,Somali,Aari,Hausa,Egyptian,Coptic,Tuareg
+*m,m,50,m,m,m,m,m,m,m,m,m,m,m,m
+*n,n,50,n,n,n,n,n,n,n,n,n,n,n,n
+*p,p,50,p,p,f,f,f,f,f,p,f,p,p,f
+*t,t,50,t,t,t,t,t,t,t,t,t,t,t,t
+*c,c,50,s,s,s,s,s,s,s,c,c̣,s,s,h
+*č,č,50,š,š,ṯ,s,s,s,s,š,č,s,s,s
+*ĉ,ĉ,50,š,ĉ,š,ĉ,š,š,š,č,s,š,š,h
+*k,k,50,k,k,k,k,k,k,k,k,k,k,k,k
+*q,q,50,ḫ,ḥ,ḫ,ḫ,k,k,k,k,k,ḫ,ḫ,k
+*b,b,50,b,b,b,b,b,b,b,b,b,b,b,b
+*d,d,50,d,d,d,d,d,d,d,d,d,ṭ,ṭ,d
+*ʒ,ʒ,50,z,z,z,z,z,d,z,z,z,z,s,h
+*ǯ,ǯ,50,z,z,ḏ,z,z,d,z,š,ǯ,z,s,h
+*g,g,50,g,g,g,g,g,g,g,g,g,ḳ,ḳ,g
+*ṭ,ṭ,50,ṭ,ṭ,ṭ,ṭ,ḍ,ḍ,ḍ,ḍ,ḍ,ṭ,t,ḍ'
+*c̣,c̣,50,c̣,ṣ,ṣ,c̣,ḍ,ḍ,ḍ,c̣,c̣,č̣,č̣,ẓ
+*č̣,č̣,50,c̣,ṣ,ẓ,c̣,ḍ,ḍ,ḍ,č̣,c̣,č̣,č̣,ẓ
+*ĉ̣,ĉ̣,50,c̣,ṣ,ĉ̣,ĉ̣,ḍ,ḍ,ḍ,č̣,c̣,č̣,č̣,ḍ'
+*ḳ,ḳ,50,q,q,q,ḳ,ḳ,ḳ,ḳ,ḳ,ḳ,q,ḳ,ɣ
+*q̣,q̣,50,ḫ,ḥ,ḫ,ḫ,ḳ,ḳ,ḳ,ḳ,ḳ,ḫ,š,ɣ
+*q̣ fricative,No,50,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,Yes,c
+*f,f,50,p,p,f,f,f,f,f,f,f,f,f,f
+*s,s,50,š,š,s,s,š,s,š,s,s,s,s,s
+*ŝ,ŝ,50,š,ĉ,š,ĉ,š,š,š,š,l,š,š,š
+*ḫ,ḫ,50,ḫ,ḥ,ḫ,ḫ,ḥ,h,ḥ,NA,g/k,ḫ,ḫ,ɣ
+*ḥ,ḥ,50,0,ḥ,ḥ,ḥ,ḥ,h,ḥ,0,g,ḥ,š,h
+*h,h,50,0,h,h,h,h,h,h,h,h,h,h,h
+*w,w,50,w,w,w,w,w,w,w,w,w,w,w,w
+*y,y,50,y,Yes,Yes,y,y,y,y,y,y,y,y,y
+*ɣ,ɣ,50,0,ʿ,ɣ,ɣ,0,ʾ,ʿ,NA,g,ʿ,ʾ,NA
+*r,r,50,r,r,r,r,r,r,r,r,r,r,r,r
+*l,l,50,l,l,l,l,l,l,l,l,l,l,l,l
+*ʾ,ʾ,50,0,ʾ,ʾ,ʾ,0,ʾ,ʾ,ʾ,0,ʾ,ʾ,0
+*ʿ,ʿ,50,0,ʿ,ʿ,ʿ,ʿ,ʾ,ʿ,0,h,ʿ,ʾ,0
+Tone,No,50,No,No,No,No,Pitch Accent,Pitch Accent,Pitch Accent,Pitch Accent,Tone,No,No,No
+Dental Root constraint,Unknown,50,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes
+Sibilant Root constraint,Unknown,50,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes
+1st Sg. Independent Pronoun,ʾan,50,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan,ʾan
+1st Sg. Independent Pronoun Augment,None,50,-āku,-āku,None,None,-i,-i,-i,-ta,-i,-āku,-āku,-āku
+2nd Sg. Independent Pronoun 1,Unclear,50,ʾant,ʾant,ʾant,ʾant,sV,baruuk,ʾant,ana,ku/ki,ʾant,ʾant,ku/ki
+2nd Sg. Independent Pronoun 2,Unclear,50,ʾant,N/A,N/A,N/A,sV,baruuk,N/A,ana,ku/ki,ku/ki,ʾant,ku/ki
+2nd Sg. Independent Gender?,Yes,50,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Yes,Yes,Yes
+3rd Sg. Independent Pronoun,sV,50,sV,hV,hV,hV,sV,baruu,sV,nV,sV,ʾant,ʾant,ʾant
+3rd Sg. Independent Gender,Yes,50,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+1st Pl. Independent Pronoun,nV,50,nV,nV,nV,nV,nV,nV,nV,wuta,mV,nV,nV,ʾan
+2nd Pl. Independent Pronoun 1,Unclear,50,ʾant,ʾant,ʾant,ʾant,sV,baaraak,ʾant,yeta,ku/ki,ʾant,ʾant,ku/ki
+2nd Pl. Independent Pronoun 2,Unclear,50,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,ku/ki,ku/ki,ʾant,ku/ki
+2nd Pl. Independent Gender,Yes,50,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,Yes
+3rd Pl. Independent Pronoun,sV,50,sV,hV,hV,hV,sV,baaraa,iya,keta,sV,ʾant,ʾant,ʾant
+3rd Pl. Gender,Yes,50,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Yes
+1st Sg. Suffix Pronoun 1,-y,50,-y,-y,-y,-y,0,-b,0,0,-y,-y,-y,-y
+1st Sg. Suffix Pronoun 2,-n,50,-n,-n,-n,-n,N/A,N/A,N/A,N/A,-n,N/A,N/A,-y
+2nd Sg. Suffix Pronoun,-k,50,-k,-k,-k,-k,N/A,-k,N/A,N/A,-k,-k,-k,-k
+2nd Sg. Suffix Pronoun Gender?,Yes,50,Yes,Yes,Yes,Yes,N/A,No,N/A,N/A,Yes,Yes,Yes,Yes
+3rd Sg. Suffix Pronoun M.,-s,50,-s,-h,-h,-h,N/A,-s,N/A,N/A,-s,-f,-f,-s
+3rd Sg. Suffix Pronoun F,-s,50,-s,-h,-h,-h,N/A,N/A,N/A,N/A,-t,-s,-s,N/A
+3rd Sg. Suffix Pronoun Gender,Yes,50,Yes,Yes,Yes,Yes,N/A,No,N/A,N/A,Yes,Yes,Yes,Yes
+1st Pl. Suffix Pronoun,-n,50,-n,-n,-n,-n,N/A,-n,N/A,N/A,-m,-n,-n,-n
+2nd Pl. Suffix Pronoun,-kn,50,-kn,-kn,-kn,-kn,N/A,-kn,N/A,N/A,-k,-kn,-kn,-k
+2nd Pl. Suffix Pronoun Gender,Yes,50,Yes,Yes,Yes,Yes,N/A,No,N/A,N/A,No,No,No,No
+3rd Pl. Suffix Pronoun,-sn,50,-sn,-hn,-hn,-hn,N/A,-sn,N/A,N/A,-s,-sn,-sn,-sn
+3rd Pl. Suffic Pronoun Gender,Yes,50,Yes,Yes,Yes,Yes,N/A,No,N/A,N/A,No,No,No,No
+1st Sg. Suffix Conjugation,-ku,50,-ku,-tu,-tu,-ku,N/A,N/A,N/A,N/A,N/A,-ku,N/A,-ku
+2nd Sg. Suffix Conjugation,-tV,50,-tV,-tV,-tV,-kV,N/A,N/A,N/A,N/A,N/A,-tV,N/A,-tV
+3rd Sg. M. Suffix Conjugation,0,50,0,-a,-a,-a,N/A,N/A,N/A,N/A,N/A,-u,N/A,0
+3rd Sg. F. Suffix Conjugation,-t,50,-t,-t,-t,-t,N/A,N/A,N/A,N/A,N/A,-t,N/A,0
+1st Pl Suffix Conjugation,-n,50,-n,-n,-n,-n,N/A,N/A,N/A,N/A,N/A,-n,N/A,0
+2nd Pl. Suffix Conjugation,-tn,50,-tn,-tn,-tn,-kn,N/A,N/A,N/A,N/A,N/A,-tn,N/A,m
+3rd Pl. M. Suffix Conjugation,Unclear,50,-ū,-ū,-ū,-ū,N/A,N/A,N/A,N/A,N/A,-ū,N/A,-n
+3rd Pl. M. Suffix Conjugation,Unclear,50,-ā,-ū,-n,-ā,N/A,N/A,N/A,N/A,N/A,-t,N/A,-nt
+1st Sg. Prefix Conjugation,ʾa-,50,ʾa-,ʾa-,ʾa-,ʾa-,ʾa-,ʾa-,ʾa-,ʾa-,ʾa-,N/A,N/A,ʾa-
+2nd Sg. Prefix Conjugation,ta-,50,ta-,ta-,ta-,ta-,ta-,ta-,ta-,ta-,ka-,N/A,N/A,ta-
+3rd Sg. M. Prefix Conjugation,ya-,50,ya-,ya-,ya-,ya-,ya-,ya-,ya-,ya-,ya-,N/A,N/A,ya-
+3rd Sg. F. Prefix Conjugation,ta-,50,ta-,ta-,ta-,ta-,ta-,ta-,ta-,ya-,ta-,N/A,N/A,ta-
+1st Pl. Prefix Conjugation,na-,50,na-,na-,na-,na-,na-,na-,na-,na-,mu-,N/A,N/A,na-
+2nd Pl. Prefix Conjugation,ta-,50,ta-,ta-,ta-,ta-,ta-,ta-,ta-,ta-,ka-,N/A,N/A,ta-
+3rd Pl. M. Prefix Conjugtion,ya-,50,ya-,ya-,ya-,ya-,ya-,ya-,ya-,ya-,sun-,N/A,N/A,0
+3rd Pl. F. Prefix Conjugation,ta-,50,ta-,ta-,ta-,ta-,ya-,ya-,ya-,ta-,sun-,N/A,N/A,0
+Suffix Conjugation?,Unclear,50,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,Yes
+Prefix Conjugation,Yes,50,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No
+Periphrastic Verb,No,50,No,No,No,No,Yes,Yes,Yes,Yes,Yes,No,No,No
+Auxiliary Univerbation,No,50,No,No,No,No,Yes,Yes,Yes,Yes,No,No,No,No
+S-Stem,Yes,50,Yes,H,H,H,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+S-Stem Position,Prefix,50,Prefix,Prefix,Prefix,Prefix,Suffix,Prefix,Suffix,Suffix,Suffix,Prefix,Prefix,Prefix
+S-Stem Position 2,Prefix,50,Prefix,Prefix,Prefix,Prefix,Suffix,Suffix,Suffix,Suffix,Suffix,Prefix,Prefix,Prefix
+T-Stem,Yes,50,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes
+T-Stem Position,Prefix,50,Infix,Prefix,Infix,Prefix,Suffix,Prefix,Suffix,Suffix,Suffix,N/A,N/A,Prefix
+T-Stem Position 2,Prefix,50,Infix,Prefix2,Infix,Prefix2,Suffix,Suffix,Suffix,Suffix,Suffix,N/A,N/A,Prefix
+N-Stem,Yes,50,Prefix,Yes,Yes,No,Yes,Yes,Yes,No,No,No,No,Yes
+N-Stem Position,Prefix,50,Prefix,Prefix,Prefix,N/A,Suffix,Prefix,Suffix,N/A,N/A,N/A,N/A,Prefix
+N-Stem Position 2,Prefix,50,Prefix,Prefix,Prefix,N/A,Suffix,Suffix,Suffix,N/A,N/A,N/A,N/A,Prefix
+Root Shape,Unclear,50,3,3,3,3,3,2,3,2,2,3,3,3
+Root Shape 2,Unclear,50,3,3,3,3,3,3,3,2,2,3,3,3
+Case Inflection,Unclear,50,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Yes
+Word Order,Unclear,50,SOV,VSO,VSO,SOV,SOV,SOV,SOV,SOV,SVO,VSO,VSO,VSO
+Agent M Prefix,Yes,50,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Yes,Yes
+Imperfective Stem,N-Infix,50,Geminate,Geminate,Geminate,Geminate,0,N-Infix,0,0,Reduplicated,Geminate,Geminate,Geminate
+Nisba,No,50,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,Yes,No
+all,-1,1,1,1,1,1,2,6,1,3,4,5,5,1
+and,-1,1,1,1,1,1,5,1,1,NA,3,4,4,1
+animal,-1,1,NA,1,1,2,3,6,4,NA,5,5,5,1
+ash.1,-1,1,1,1,1,1,2,9,3,4,5,6,7,8
+blood,-1,1,1,1,1,1,3,6,3,4,5,2,2,1
+bone,-1,1,1,1,1,1,2,4,2,2,3,3,3,3
+camel,-1,1,1,1,1,1,1,1,2,NA,1,NA,3,4
+child,-1,1,2,1,1,2,3,7,2,4,1,5,6,1
+come,-1,1,1,2,3,4,5,3,1,6,7,3,3,8
+day,-1,1,1,1,1,2,3,8,4,5,6,6,7,8
+die,-1,1,NA,1,1,1,2,5,1,4,1,1,1,1
+dog,-1,1,1,1,1,2,3,9,4,5,3,7,8,9
+drink,-1,1,1,1,2,3,4,8,5,6,1,7,7,7
+earth,-1,1,1,1,1,2,3,9,4,5,6,7,8,7
+eye,-1,1,1,1,1,1,2,7,3,4,5,6,6,6
+father,-1,1,1,1,1,1,1,1,1,1,1,2,2,1
+fire.1,-1,1,1,1,NA,1,2,8,3,4,5,6,7,8
+fire.2,-1,1,NA,1,1,NA,NA,N/A,NA,NA,NA,2,3,NA
+hear,-1,1,1,1,1,1,2,6,2,3,4,5,5,6
+heart.1,-1,1,1,1,1,1,2,7,3,4,5,1,6,7
+heart.2,-1,1,1,1,1,1,1,7,1,4,5,1,6,7
+horn,-1,1,1,1,1,1,2,6,2,3,4,5,5,6
+kidney,-1,1,1,1,1,1,1,5,1,NA,1,3,NA,3
+knee 1,-1,1,1,1,1,1,2,4,2,2,2,3,2,3
+know,-1,1,1,1,2,1,3,4,4,5,6,1,7,6
+liver,-1,1,1,1,1,1,2,8,3,2,4,5,6,7
+man (adult male),-1,1,1,2,3,4,5,10,3,6,5,7,8,9
+man (human being),-1,1,1,2,2,3,4,2,5,6,7,8,8,9
+mother,-1,1,1,1,1,1,2,6,3,4,5,1,1,1
+mountain.1,-1,1,1,2,3,4,NA,8,5,NA,6,7,7,4
+mouth,-1,1,1,1,1,1,1,1,1,1,2,3,3,4
+name,-1,1,1,1,1,1,2,1,2,1,1,4,4,1
+name 2,-1,1,1,1,1,1,2,1,1,1,1,4,4,1
