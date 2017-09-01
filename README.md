@@ -4,6 +4,7 @@ optimal phylogenetic trees.
 
 # Dependencies
 This code requires Python3 and has been verified to work with Python 3.6.2.
+It also requires [BioPython](http://biopython.org/) for pretty tree printing: pip install biopython
 
 # Usage
 python fit_data.py CSV_FILE_WITH_DATA

@@ -6,9 +6,9 @@ from random import randint, shuffle, random, sample
 from Bio.Phylo import BaseTree
 from Bio import Phylo
 
-# Convert the "tree" object (list of clades) to a Bio.Phylo tree 
-# to take advantage of their output methods
 def prettyprint_tree(tree, file=None):
+    # Convert the "tree" object (list of clades) to a BioPython tree 
+    # to take advantage of their output methods
     def create_ntree(tree):
         ntree = BaseTree.Clade()
         for key in tree:
@@ -19,6 +19,8 @@ def prettyprint_tree(tree, file=None):
                 ntree.clades.append(BaseTree.Clade(name=list(key)[0]))
         return ntree
 
+    # Recursively add a node to a dictionary representation of a tree 
+    # (each node is a key containing a dictionary with subnodes)
     def create_tree_dict(curdict,curnode):
         for key in curdict:
             if curnode.issubset(key):
@@ -28,11 +30,15 @@ def prettyprint_tree(tree, file=None):
             curdict[curnode] = {}
         return curdict
 
+    # Sort the clades from largest to smallest
     new_tree = sorted(tree, key=lambda x:-len(x))
+    # Build a dictionary representation of the tree
     tree_dict = {}
     for clade in new_tree:
         tree_dict = create_tree_dict(tree_dict,clade)
+    # Convert the dictionary representation to a BioPython Tree object
     ntree = BaseTree.Tree(create_ntree(tree_dict))
+    # Use the BioPython print method
     Phylo.draw_ascii(ntree,file=file)
     try:
         Phylo.draw(ntree)
@@ -44,8 +50,11 @@ def readin_chars(arg):
     # Creates data dictionary object (with four keys chars, inhchar, weights,
     # and expected_failures)
     infile = open(arg)
+    # Get a list of language names
     names = infile.readline().rstrip().split(',')
+    # Initialize the data dictionary
     data = {}
+    # Get a list of all of the languages (terminal nodes)
     data['lgg'] = [x for x in names if x not in ['',
                                                  'InheritedValue',
                                                  'Weighting']]
@@ -107,12 +116,12 @@ def find_possible_clades(data):
                 posclades[curclade] = {}
                 posclades[curclade]['evid'] = [char]
                 posclades[curclade]['score'] = data['weights'][char]
-    return posclades
+    return posclades 
 
 def find_conflicts(clades):
     # Return a dictionary that maps all possible clades to other possible
     # clades that they are incompatible with
-    def testTreeSuit(c1,c2):
+    def testTreeSuit(c 1,c2):
         # Test is two clades are compatible
         if c1.intersection(c2) in [c1,c2,set([])]:
             return True
@@ -126,24 +135,32 @@ def find_conflicts(clades):
         for clade2 in clades:
             if not testTreeSuit(clade1, clade2):
                 conflicts[clade1].append(clade2)
-    return conflicts
+    return conflicts 
 
 def build_tree_from_list(clist,conflicts,posclades):
-    # Extract a tree from an ordered list of clades
+    # Extract a tree (list of clades) from
+    # an ordered list of (possibly conflicting) clades
     clist = copy.copy(clist)
 
+    # Initialize list and score
     tree = []
     score = 0
+    # Go through list
     while len(clist) > 0:
+        # Remove the next clade on the list
         clade = clist.pop(0)
+        # Add the clade to the tree
         tree.append(clade)
+        # Remove from the list of clades any clades incompatible with the clade
+        # just added to the tree and increment the score with the weights
+        # relevant to the excluded clades
         for incomp_clade in conflicts[clade]:
             try:
                 clist.remove(incomp_clade)
                 score += posclades[incomp_clade]['score']
             except ValueError:
                 continue
-    return (tree,score)
+    return (tree,scor e)
 
 def sort_clades(clades, conflicts, posclades):
     # Rank each clade by (1) strength of incompatible clades and (2) number of
@@ -156,6 +173,10 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
                     optima, curscore, curtree):
     # Use the branch_and_bind method to find the optimal trees for a given
     # dataset.
+    # Recursively move through the list of clades
+    # For each clade:
+    #  Try keeping the clade (removing all remaining incompatible with penalty) 
+    #  Try not keeping the clade (with penalty for removed clade)
 
     # Extract the current best from current optimum list
     curbest = optima[0][0]
@@ -232,11 +253,16 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
     return optima
 
 def write_output(optima, posclades, arg, maxscore, elapsed_time):
+    # Get the output filename/directory from input filename/directory
     s = '/'.join(arg.split('.')[0].split('/')[1:])
     outfilename = 'outputs/' + s + '.txt'
     outfile = open(outfilename,'w')
+    # Write out headers (time and # of optima)
     outfile.write('Elapsed Time: ' + str(elapsed_time))
     outfile.write('# of trees: ' + str(len(optima)) + '\n')
+    # Print out all the trees, their associated scores, what percentage of the
+    # weighted score was excluded and a list included/excluded clades and the
+    # evidence for each clade
     i = 1
     for optimum in optima:
         print('Tree #'+str(i)+':')
@@ -264,27 +290,33 @@ def write_output(optima, posclades, arg, maxscore, elapsed_time):
     return
 
 if __name__ == "__main__":
-    # Load in the datasets
+    debug = False
+    # Go through commandline arguments
     for arg in sys.argv:
-        # Save the start time to get accurate run times
-        start_time = timeit.default_timer()
+        # Set the debug flag
+        if arg == 'debug':
+            debug = True
         # Only csv files are valid datasets
         if arg[-3:] != 'csv':
             continue
+        # Save the start time to get accurate run times
+        start_time = timeit.default_timer()
         # Parse the dataset
         data = readin_chars(arg)
         # Extract the list of possible clades
         posclades = find_possible_clades(data)
         # Print out a list of clades and their evidence (for debugging)
-        for clade in sorted(posclades.keys(),key = lambda y:len(y)):
-            print('Clade: ' + str(clade))
-            print('\tEvidence: ' + str(posclades[clade]['evid']))
+        if debug:
+            for clade in sorted(posclades.keys(),key = lambda y:len(y)):
+                print('Clade: ' + str(clade))
+                print('\tEvidence: ' + str(posclades[clade]['evid']))
         # Calculate which clades conflict with each other
         conflicts = find_conflicts(posclades.keys())
         # Print out the list of conflicting clades (for debugging)
-        for clade in conflicts:
-            print('Clade = ' + str(clade))
-            print('\tConflicts: ' + str(conflicts[clade]))
+        if debug:
+            for clade in conflicts:
+                print('Clade = ' + str(clade))
+                print('\tConflicts: ' + str(conflicts[clade]))
         # Sort the clades for optimal algorithm completion
         sorted_clades = sort_clades(posclades.keys(), conflicts, posclades)
         # Create the initial guess for an optimal tree to set limit on bound
