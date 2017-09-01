@@ -10,9 +10,9 @@ It also requires [BioPython](http://biopython.org/) for pretty tree printing: pi
 python fit_data.py CSV_FILE_WITH_DATA
 
 # Input Format
-Rows for characters, columns for languages
+Columns for characters, rows for terminals (terminal name in first row)
 
-Two optional columns:
+Two optional rows:
 InheritedValue - Gives the state for the proto-language (when independently recoverable)
 Weighting - Gives the weight for states in this character
 

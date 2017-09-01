@@ -1,5 +1,5 @@
 from itertools import *
-import timeit
+from time import perf_counter as perfc
 import sys
 import copy
 from random import randint, shuffle, random, sample
@@ -50,46 +50,41 @@ def readin_chars(arg):
     # Creates data dictionary object (with four keys chars, inhchar, weights,
     # and expected_failures)
     infile = open(arg)
-    # Get a list of language names
+    # Get a list of character names
     names = infile.readline().rstrip().split(',')
-    # Initialize the data dictionary
+    # Initialize the data dictionary and language list
     data = {}
-    # Get a list of all of the languages (terminal nodes)
-    data['lgg'] = [x for x in names if x not in ['',
-                                                 'InheritedValue',
-                                                 'Weighting']]
+    lgg = []
+    # Initialize characters, known inherited features, and weights
     data['chars'] = {} # Characters
-    data['inhchar'] = {} # Known inherited features
+    data['inhchar'] = {} # Known inherited characters
     data['weights'] = {} # Character weights
+    for name in names:
+        if name != '':
+            data['chars'][name] = {}
+            data['inhchar'][name] = ''
+            data['weights'][name] = 1
     data['expected_failures'] = 0 # Sum of character weights
     for line in infile:
-        # Read in the character
-        char = line.rstrip().split(',')
-        # Make sure that there are no null values
-        if '' in char:
-            input(char)
-        # Setup dictionary entries
-        data['chars'][char[0]] = {}
-        data['weights'][char[0]] = 1
-        for i in range(len(names[1:])):
-            # Get relevant language (or special column)
-            key = names[i+1]
-
-            # Store Inherited Value
-            print(char)
-            if key in ['InheritedValue','DatasimValue']:
-                data['inhchar'][char[0]] = char[i+1]
-            # Store character weight
-            elif key == 'Weighting':
-                data['weights'][char[0]] = int(char[i+1])
-            # Store sets of languages for each character value
-            else:
+        # Read in the row
+        s = line.rstrip().split(',')
+        if s[0] == 'Weighting':
+            for i in range(len(s[1:])):
+                data['weights'][names[i+1]] = int(s[i+1])
+        elif s[1] == 'InheritedValue':
+            for i in range(len(s[1:])):
+                data['inhchar'][names[i+1]] = s[i+1]
+        elif s[0] not in ['Weighting','InheritedValue']:
+            # Add the language name to the language list
+            lgg.append(s[0])
+            for i in range(len(s[1:])):
                 try:
-                    data['chars'][char[0]][char[i+1]] += [key]
+                    data['chars'][names[i+1]][s[i+1]] += [s[0]]
                 except KeyError:
-                    data['chars'][char[0]][char[i+1]] = [key]
-                if char[i+1] != data['inhchar'][char[0]]:
-                    data['expected_failures'] += data['weights'][char[0]]
+                    data['chars'][names[i+1]][s[i+1]] = [s[0]]
+                if s[i+1] != data['inhchar'][names[i+1]]:
+                    data['expected_failures'] += data['weights'][names[i+1]]
+    data['lgg'] = lgg
     return data
 
 def find_possible_clades(data):
@@ -121,7 +116,7 @@ def find_possible_clades(data):
 def find_conflicts(clades):
     # Return a dictionary that maps all possible clades to other possible
     # clades that they are incompatible with
-    def testTreeSuit(c 1,c2):
+    def testTreeSuit(c1,c2):
         # Test is two clades are compatible
         if c1.intersection(c2) in [c1,c2,set([])]:
             return True
@@ -160,7 +155,7 @@ def build_tree_from_list(clist,conflicts,posclades):
                 score += posclades[incomp_clade]['score']
             except ValueError:
                 continue
-    return (tree,scor e)
+    return (tree,score)
 
 def sort_clades(clades, conflicts, posclades):
     # Rank each clade by (1) strength of incompatible clades and (2) number of
@@ -258,7 +253,7 @@ def write_output(optima, posclades, arg, maxscore, elapsed_time):
     outfilename = 'outputs/' + s + '.txt'
     outfile = open(outfilename,'w')
     # Write out headers (time and # of optima)
-    outfile.write('Elapsed Time: ' + str(elapsed_time))
+    outfile.write('Elapsed Time: ' + str(elapsed_time)+' seconds\n')
     outfile.write('# of trees: ' + str(len(optima)) + '\n')
     # Print out all the trees, their associated scores, what percentage of the
     # weighted score was excluded and a list included/excluded clades and the
@@ -300,7 +295,7 @@ if __name__ == "__main__":
         if arg[-3:] != 'csv':
             continue
         # Save the start time to get accurate run times
-        start_time = timeit.default_timer()
+        start_time = perfc()
         # Parse the dataset
         data = readin_chars(arg)
         # Extract the list of possible clades
@@ -325,6 +320,6 @@ if __name__ == "__main__":
         optima = branch_and_bind(sorted_clades, posclades, 
                                  conflicts, [(guess[1], guess[0])], 0, [])
         # Get the amount of time from start to end of optimization
-        elapsed = timeit.default_timer() - start_time
+        elapsed = perfc() - start_time
         # Write the results to file
         write_output(optima, posclades, arg, data['expected_failures'],elapsed)
