@@ -1,8 +1,8 @@
 .PHONY : casestudy
 
-rawdata/IE/IE-convert-15050.csv : convert_IE_data.py IEDATA
+rawdata/IE/IE-convert-15050.csv : convert_IE_data.py IEDATA Makefile
 	@mkdir -p $(@D) && \
-	python $< M=50 P=50 exinh=M3=1 exinh=M5=1 exinh=M12=1 exinh=M14=1exinh=M15=1 exinh=P3=-1 exc=M11
+	python $< M=50 P=50 exinh=M3=1 exinh=M5=1 exinh=M12=1 exinh=M14=1 exinh=M15=1 exc=M11
 
 outputs/AA/MaxSyn/%.txt : fit_data.py rawdata/AA/%.csv
 	@mkdir -p $(@D) && \

@@ -100,7 +100,7 @@ def find_possible_clades(data):
     for char in data['chars']:
         # Examine each value
         for val in data['chars'][char]:
-            # Do not include if it is an inherited character
+            # Do not include if it is an inherited character or NA
             if val == data['inhchar'][char] or val in ('NA','N/A'):
                 continue
             curclade = frozenset(data['chars'][char][val])

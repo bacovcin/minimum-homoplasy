@@ -18,7 +18,6 @@ def weighted_compatibility_filter(treefile,scorefile,weights):
             s = line.rstrip().split('\t')
             compscore = int(s[-1])
             charid = int(s[-2])-1
-            print(charid)
             curtree.append(compscore*weights[charid])
 
     infile = open(treefile)
