@@ -71,7 +71,7 @@ def readin_chars(arg):
         if s[0] == 'Weighting':
             for i in range(len(s[1:])):
                 data['weights'][names[i+1]] = int(s[i+1])
-        elif s[1] == 'InheritedValue':
+        elif s[0] == 'InheritedValue':
             for i in range(len(s[1:])):
                 data['inhchar'][names[i+1]] = s[i+1]
         elif s[0] not in ['Weighting','InheritedValue']:
