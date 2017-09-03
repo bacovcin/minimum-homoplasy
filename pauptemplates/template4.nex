@@ -1,0 +1,9 @@
+BEGIN PAUP;
+  gettrees file=tmp_comp.trees dupTrees=eliminate mode=3;
+  deroottrees;
+  gettrees file=tmp_comp_con.trees dupTrees=eliminate mode=7;
+  savetrees file=out_comp.trees replace=yes format=newick;
+  pscores all/ ci ri rc hi compatibility=yes scorefile=out_comp.scores replace=yes displayOut=no;
+  pscores all/ single=all ci ri rc hi compatibility=yes scorefile=full_comp.scores replace=yes displayOut=no;
+  QUIT;
+END;

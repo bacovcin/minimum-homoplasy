@@ -1,0 +1,10 @@
+BEGIN PAUP;
+  set criterion=parsimony maxtrees=100 increase=no;
+  hsearch start=stepwise addseq=random nreps=25 swap=tbr;
+  filter best=yes;
+  set maxtrees=100 increase=no;
+  hsearch start=current swap=tbr hold=1 nbest=1000;
+  pscores all/ single=all tl=no compatibility=yes scorefile=tmp.scores replace=yes displayOut=no;
+  savetrees file=tmp.trees replace=yes format=nexus;
+  QUIT;
+END;

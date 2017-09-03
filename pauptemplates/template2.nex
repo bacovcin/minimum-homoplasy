@@ -1,0 +1,6 @@
+BEGIN PAUP;
+  gettrees file=tmp.trees dupTrees=eliminate;
+  savetrees file=tmp_comp.trees replace=yes format=newick;
+  contree /majrule treeFile=tmp_comp_con.trees replace=yes semistrict=yes showTree=no;
+  QUIT;
+END;

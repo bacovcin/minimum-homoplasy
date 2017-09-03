@@ -4,8 +4,59 @@ import os
 import sys
 import timeit
 
-def convertWeightedCharactersToNexus(infile,outfile,keyfile,
-                                     outfilename, outputname):
+def weighted_compatibility_filter(treefile,scorefile,weights):
+    infile = open(scorefile)
+    header = infile.readline()
+
+    scores = []
+    curtree = []
+    for line in infile:
+        if line[0] != '\t' and curtree != []:
+            scores.append((len(scores),sum(curtree)))
+            curtree = []
+        else:
+            s = line.rstrip().split('\t')
+            compscore = int(s[-1])
+            charid = int(s[-2])-1
+            print(charid)
+            curtree.append(compscore*weights[charid])
+
+    infile = open(treefile)
+    treeheader = ''
+    trees = []
+    treestart = False
+    for line in infile:
+        if line[:4] != 'tree' and not treestart:
+            treeheader += line
+        else:
+            treestart = True
+            trees.append(line)
+
+    maxcomp = 0
+    for score in scores:
+        if score[1] > maxcomp:
+            maxcomp = score[1]
+
+    bestscores = [x for x in scores if x[1] == maxcomp]
+    besttrees = [trees[x[0]] for x in bestscores]
+
+    outfile = open('tmp.trees','w')
+    outfile.write(treeheader)
+    for tree in besttrees:
+        outfile.write(tree)
+    outfile.write('End;')
+    print('DONE!!!')
+
+def addDataToPAUPFile(infilename,outfilename,newline):
+    with open(infilename) as infile:
+        with open(outfilename,'w') as outfile:
+            outfile.write(infile.readline())
+            outfile.write(newline)
+            for line in infile:
+                outfile.write(line)
+
+def convertWeightedCharactersToNexus(infile,outfile,
+                                     outfilename):
     # Convert the data from our format into a Nexus file
     # For weighted characters, repeat the character a number of times
     # equal to its weight
@@ -85,79 +136,22 @@ def convertWeightedCharactersToNexus(infile,outfile,keyfile,
         except KeyError:
             pass
         outfile.write('END;\n')
-        for i in range(len(names[1:])):
-            keyfile.write(names[i+1]+':\n')
-            for key in cstates[i]:
-                keyfile.write('\t'+cstates[i][key]+':'+key+'\n')
-        tmpfile = open('temp1.nex','w')
-        tmpfile.write('BEGIN PAUP;\n')
-        tmpfile.write('  execute '+outfilename+';\n')
-        tmpfile.write('  set criterion=parsimony maxtrees=100 increase=no;\n')
-        tmpfile.write('  hsearch start=stepwise addseq=random ')
-        tmpfile.write('nreps=25 swap=tbr;\n')
-        tmpfile.write('  filter best=yes;\n')
-        tmpfile.write('  set maxtrees=100 increase=no;\n')
-        tmpfile.write('  hsearch start=current swap=tbr hold=1 nbest=1000;\n')
-        tmpfile.write('  pscores all/ ci ri rc hi compatibility=yes ')
-        tmpfile.write('scorefile=tmp.scores replace=yes;\n')
-        tmpfile.write('  savetrees file=tmp.trees replace=yes ')
-        tmpfile.write('format=nexus;\n')
-        tmpfile.write('  QUIT;\n')
-        tmpfile.write('END;\n')
-        tmpfile = open('temp2.nex','w')
-        tmpfile.write('BEGIN PAUP;\n')
-        tmpfile.write('  execute '+outfilename+';\n')
-        tmpfile.write('  gettrees file=tmp.trees;\n')
-        tmpfile.write('  treeinfo;\n')
-        tmpfile.write('  pscores all/ ci ri rc hi compatibility=yes ')
-        tmpfile.write('scorefile='+outputname+
-                      '_comp.scores replace=yes;\n')
-        tmpfile.write('  savetrees file='+outputname+
-                      '_comp.trees replace=yes ')
-        tmpfile.write('format=newick;\n')
-        tmpfile.write('  contree /treeFile='+outputname+
-                      '_comp_con.trees replace=yes semistrict=yes;\n')
-        tmpfile.write('  QUIT;\n')
-        tmpfile.write('END;')
-        tmpfile = open('temp3.nex','w')
-        tmpfile.write('BEGIN PAUP;\n')
-        tmpfile.write('  execute '+outfilename+';\n')
-        tmpfile.write('  ASSUME wtset=mywts ancstates=ancestor;\n')
-        tmpfile.write('  set criterion=parsimony maxtrees=100 increase=no;\n')
-        tmpfile.write('  hsearch start=stepwise addseq=random ')
-        tmpfile.write('nreps=25 swap=tbr;\n')
-        tmpfile.write('  filter best=yes;\n')
-        tmpfile.write('  set maxtrees=100 increase=no;\n')
-        tmpfile.write('  hsearch start=current swap=tbr ')
-        tmpfile.write('hold=1 nbest=100;\n')
-        tmpfile.write('  filter best=yes;\n')
-        tmpfile.write('  pscores all/ ci ri rc hi compatibility=yes ')
-        tmpfile.write('scorefile='+outputname+
-                      '_wp.scores replace=yes;\n')
-        tmpfile.write('  savetrees file='+outputname+
-                      '_wp.trees replace=yes ')
-        tmpfile.write('format=newick;\n')
-        tmpfile.write('  contree /treeFile='+outputname+
-                      '_wp_con.trees replace=yes semistrict=yes;\n')
-        tmpfile.write('  QUIT;\n')
-        tmpfile.write('END;\n')
-        tmpfile = open('temp4.nex','w')
-        tmpfile.write('BEGIN PAUP;\n')
-        tmpfile.write('  gettrees file='+outputname+'_comp_con.trees;\n')
-        tmpfile.write('  savetrees file='+outputname+
-                      '_comp_con.trees replace=yes ')
-        tmpfile.write('format=newick;\n')
-        tmpfile.write('  QUIT;\n')
-        tmpfile.write('END;\n')
-        tmpfile = open('temp5.nex','w')
-        tmpfile.write('BEGIN PAUP;\n')
-        tmpfile.write('  gettrees file='+outputname+'_wp_con.trees;\n')
-        tmpfile.write('  savetrees file='+outputname+
-                      '_wp_con.trees replace=yes ')
-        tmpfile.write('format=newick;\n')
-        tmpfile.write('  QUIT;\n')
-        tmpfile.write('END;\n')
-    return
+    addDataToPAUPFile('pauptemplates/template1.nex',
+                      'temp1.nex',
+                      'EXECUTE '+outfilename+';\n')
+    addDataToPAUPFile('pauptemplates/template2.nex',
+                      'temp2.nex',
+                      'EXECUTE '+outfilename+';\n')
+    addDataToPAUPFile('pauptemplates/template3.nex',
+                      'temp3.nex',
+                      'EXECUTE '+outfilename+';\n')
+    addDataToPAUPFile('pauptemplates/template4.nex',
+                      'temp4.nex',
+                      'EXECUTE '+outfilename+';\n')
+    addDataToPAUPFile('pauptemplates/template5.nex',
+                      'temp5.nex',
+                      'EXECUTE '+outfilename+';\n')
+    return [int(x) for x in lgg['Weighting']]
 
 if __name__ == "__main__":
     # Load in the datasets
@@ -166,54 +160,54 @@ if __name__ == "__main__":
         if arg[-3:] != 'csv':
             continue
         print('Creating nexus file...')
-        s = '/'.join(arg.split('.')[0].split('/')[1:])
-        outfilename = 'nexfiles/' + s + '.nex'
-        outputname = 'outputs/' + s 
-        keyfilename = 'nexfiles/' + s + '.key'
+        outdir = '/'.join(arg.split('.')[0].split('/')[1:-1])
+        filename = arg.split('.')[0].split('/')[-1]
+        outfilename = 'nexfiles/' + outdir+'/'+filename + '.nex'
         with open(outfilename,'w') as outfile:
-            with open(keyfilename,'w') as keyfile:
-                convertWeightedCharactersToNexus(open(arg),
-                                                 outfile,
-                                                 keyfile,
-                                                 outfilename,
-                                                 outputname)
-        os.system('paup temp1.nex &&'+
-                  'python paup_maximum_compatibility.py &&'+
-                  'paup temp2.nex &&'+
+            weights = convertWeightedCharactersToNexus(open(arg),
+                                                       outfile,
+                                                       outfilename)
+        os.system('paup temp1.nex')
+        weighted_compatibility_filter('tmp.trees','tmp.scores',weights) 
+        os.system('paup temp2.nex &&'+
                   'paup temp3.nex &&'+
                   'paup temp4.nex &&'+
                   'paup temp5.nex')
+        os.remove('tmp_comp_con.trees')
+        os.remove('tmp_wp_con.trees')
+        os.remove('tmp_comp.trees')
+        os.remove('tmp_wp.trees')
         os.remove('tmp.trees')
         os.remove('temp1.nex')
         os.remove('temp2.nex')
         os.remove('temp3.nex')
         os.remove('temp4.nex')
         os.remove('temp5.nex')
-        trees = list(Phylo.parse(outputname+'_comp.trees','newick'))
-        with open(outputname+'_comp.trees','w') as outfile:
+        os.rename('full_comp.scores',
+                  'outputs/'+outdir+'/comp/'+filename+'.scores')
+        scores = open('out_comp.scores').readlines()
+        trees = list(Phylo.parse('out_comp.trees','newick'))
+        with open('outputs/'+outdir+'/comp/'+filename+'.txt','w') as outfile:
             i = 0
             for tree in trees:
                 i += 1
                 outfile.write('Tree #'+str(i)+':\n')
+                outfile.write(scores[0])
+                outfile.write(scores[i])
                 Phylo.draw_ascii(tree,file=outfile)
-        trees = list(Phylo.parse(outputname+'_comp_con.trees','newick'))
-        with open(outputname+'_comp_con.trees','w') as outfile:
+        os.remove('out_comp.scores')
+        os.remove('out_comp.trees')
+        os.rename('full_wp.scores',
+                  'outputs/'+outdir+'/wmp/'+filename+'.scores')
+        scores = open('out_wp.scores').readlines()
+        trees = list(Phylo.parse('out_wp.trees','newick'))
+        with open('outputs/'+outdir+'/wmp/'+filename+'.txt','w') as outfile:
             i = 0
             for tree in trees:
                 i += 1
                 outfile.write('Tree #'+str(i)+':\n')
+                outfile.write(scores[0])
+                outfile.write(scores[i])
                 Phylo.draw_ascii(tree,file=outfile)
-        trees = list(Phylo.parse(outputname+'_wp.trees','newick'))
-        with open(outputname+'_wp.trees','w') as outfile:
-            i = 0
-            for tree in trees:
-                i += 1
-                outfile.write('Tree #'+str(i)+':\n')
-                Phylo.draw_ascii(tree,file=outfile)
-        trees = list(Phylo.parse(outputname+'_wp_con.trees','newick'))
-        with open(outputname+'_wp_con.trees','w') as outfile:
-            i = 0
-            for tree in trees:
-                i += 1
-                outfile.write('Tree #'+str(i)+':\n')
-                Phylo.draw_ascii(tree,file=outfile)
+        os.remove('out_wp.scores')
+        os.remove('out_wp.trees')

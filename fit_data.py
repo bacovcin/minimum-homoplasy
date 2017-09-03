@@ -249,8 +249,9 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
 
 def write_output(optima, posclades, arg, maxscore, elapsed_time):
     # Get the output filename/directory from input filename/directory
-    s = '/'.join(arg.split('.')[0].split('/')[1:])
-    outfilename = 'outputs/' + s + '.txt'
+    mydir = '/'.join(arg.split('.')[0].split('/')[1:-1])
+    myfile = arg.split('.')[0].split('/')[-1]
+    outfilename = 'outputs/' + mydir + '/MaxSyn/' + myfile + '.txt'
     outfile = open(outfilename,'w')
     # Write out headers (time and # of optima)
     outfile.write('Elapsed Time: ' + str(elapsed_time)+' seconds\n')

@@ -1,0 +1,12 @@
+BEGIN PAUP;
+  ASSUME wtset=mywts ancstates=ancestor;
+  set criterion=parsimony maxtrees=100 increase=no;
+  hsearch start=stepwise addseq=random nreps=25 swap=tbr;
+  filter best=yes;
+  set maxtrees=100 increase=no;
+  hsearch start=current swap=tbr hold=1 nbest=100;
+  filter best=yes;
+  savetrees file=tmp_wp.trees replace=yes;
+  contree /majrule treeFile=tmp_wp_con.trees replace=yes semistrict=yes showTree=no;
+  QUIT;
+END;

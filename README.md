@@ -1,4 +1,4 @@
-# Maximum Synapomorphy
+#Maximum Synapomorphy
 A python package for implementing a maximum synapomorphy method for finding
 optimal phylogenetic trees. 
 
@@ -21,3 +21,32 @@ Weighting - Gives the weight for states in this character
 
 Special State Value:
 NA - A state named NA is ignored by the software (useful for dealing with polymorphic characters)
+
+# Using Indo-European Data
+One of our examples uses Indo-European data from the project (Computational Phylogenetics In Historical Linguistics)[https://www.cs.utexas.edu/users/tandy/histling.html]
+
+The data can be downloaded from this link: (http://www.cs.rice.edu/~nakhleh/CPHL/IEDATA_112603)[http://www.cs.rice.edu/~nakhleh/CPHL/IEDATA_112603]
+
+The data must then be saved in the home directory of the repository as IEDATA.
+
+The python script convert\_IE\_data.py can be used to convert the data to the format used by the Maximum Synapomorphy algorithm.
+
+## Conversion Flags (takes the form flag=value)
+P=Weight for phonological characters
+M=Weight for morphological characters
+L=Weight for lexical characters
+exinh=Exceptional ancestral values (Example ex=M1=1 would set the ancestral value for M1 to 1), note that phonological characters are assumed to have an ancestral value of 1
+exc=Exclusion of character (Example exc=M11 would exclude M11 from the output dataset)
+
+# PAUP-Based Weighted Maximum Parsimony and Weighted Maxmium Compatibility
+We have implemented a Python script (run\_paup.py) that takes as a command line argument a csv file in the Maximum Synapomorphy format and
+performs the following operations:
+1) Converts the data into a Nexus file for use in PAUP (state values are converted to A-Z to avoid encoding issues)
+2) Updates the PAUP templates in the PAUP template folder to use the data from the new Nexus file
+3) Runs the PAUP templates (and uses some intermediate output files to calculate weighted compatibility)
+4) Outputs the scores associated with all the found trees according to maximum parsimony and maximum compatibility as well as their strict consensus and majority rule consensus trees
+
+# Makefile
+The exact commands used to generate data for the paper "A New Method for Computational Cladistics: An Afro-Asiatic Case Study" can be found in the Makefile. To replicate our analysis: 
+1) Download the Indo-European data as described above
+2) Run: make casestudy
