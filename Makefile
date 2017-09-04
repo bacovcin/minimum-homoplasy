@@ -1,5 +1,9 @@
 .PHONY : casestudy
 
+rawdata/IE/IE-convert-special.csv : convert_IE_data.py IEDATA Makefile
+	@mkdir -p $(@D) && \
+	python $< M=1000 P=1000 exinh=M3=1 exinh=M5=1 exinh=M12=1 exinh=M14=1 exinh=M15=1 exc=M11 specw=M9=1 specw=M10=1 specw=P2=1 specw=P3=1
+
 rawdata/IE/IE-convert-15050.csv : convert_IE_data.py IEDATA Makefile
 	@mkdir -p $(@D) && \
 	python $< M=50 P=50 exinh=M3=1 exinh=M5=1 exinh=M12=1 exinh=M14=1 exinh=M15=1 exc=M11
@@ -24,4 +28,4 @@ outputs/IE/comp/%.txt : run_paup.py rawdata/IE/%.csv
 	mkdir -p nexfiles/IE && \
 	python $< $(word 2,$^)
 
-casestudy : outputs/AA/MaxSyn/AA-Attested-15050.txt outputs/AA/comp/AA-Attested-15050.txt outputs/AA/MaxSyn/AA-Proto-15050.txt outputs/AA/comp/AA-Proto-15050.txt outputs/IE/MaxSyn/IE-convert-15050.txt outputs/IE/comp/IE-convert-15050.txt
+casestudy : outputs/AA/MaxSyn/AA-Attested-15050.txt outputs/AA/comp/AA-Attested-15050.txt outputs/AA/MaxSyn/AA-Proto-15050.txt outputs/AA/comp/AA-Proto-15050.txt outputs/IE/MaxSyn/IE-convert-15050.txt outputs/IE/comp/IE-convert-15050.txt outputs/IE/comp/IE-convert-special.txt outputs/IE/MaxSyn/IE-convert-special.txt

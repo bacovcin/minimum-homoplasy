@@ -37,6 +37,7 @@ M=Weight for morphological characters
 L=Weight for lexical characters
 exinh=Exceptional ancestral values (Example ex=M1=1 would set the ancestral value for M1 to 1), note that phonological characters are assumed to have an ancestral value of 1
 exc=Exclusion of character (Example exc=M11 would exclude M11 from the output dataset)
+specw=Special weight for specific character (Example specw=M10=1000 would set the weight for M10 to 1000 while all other morphological characters would get the M weight)
 
 # PAUP-Based Weighted Maximum Parsimony and Weighted Maxmium Compatibility
 We have implemented a Python script (run\_paup.py) that takes as a command line argument a csv file in the Maximum Synapomorphy format and

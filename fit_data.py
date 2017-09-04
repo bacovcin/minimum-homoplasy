@@ -6,6 +6,17 @@ from random import randint, shuffle, random, sample
 from Bio.Phylo import BaseTree
 from Bio import Phylo
 
+# Recursively add a node to a dictionary representation of a tree 
+# (each node is a key containing a dictionary with subnodes)
+def create_tree_dict(curdict,curnode):
+    for key in curdict:
+        if curnode.issubset(key):
+            curdict[key] = create_tree_dict(curdict[key],curnode)
+            break
+    else:
+        curdict[curnode] = {}
+    return curdict
+
 def prettyprint_tree(tree, file=None):
     # Convert the "tree" object (list of clades) to a BioPython tree 
     # to take advantage of their output methods
@@ -18,17 +29,6 @@ def prettyprint_tree(tree, file=None):
             else:
                 ntree.clades.append(BaseTree.Clade(name=list(key)[0]))
         return ntree
-
-    # Recursively add a node to a dictionary representation of a tree 
-    # (each node is a key containing a dictionary with subnodes)
-    def create_tree_dict(curdict,curnode):
-        for key in curdict:
-            if curnode.issubset(key):
-                curdict[key] = create_tree_dict(curdict[key],curnode)
-                break
-        else:
-            curdict[curnode] = {}
-        return curdict
 
     # Sort the clades from largest to smallest
     new_tree = sorted(tree, key=lambda x:-len(x))
@@ -82,8 +82,10 @@ def readin_chars(arg):
                     data['chars'][names[i+1]][s[i+1]] += [s[0]]
                 except KeyError:
                     data['chars'][names[i+1]][s[i+1]] = [s[0]]
-                if s[i+1] != data['inhchar'][names[i+1]]:
-                    data['expected_failures'] += data['weights'][names[i+1]]
+    for char in data['chars']:
+        for state in data['chars'][char]:
+            if state != data['inhchar'][char]:
+                data['expected_failures'] += data['weights'][char]
     data['lgg'] = lgg
     return data
 
@@ -113,15 +115,16 @@ def find_possible_clades(data):
                 posclades[curclade]['score'] = data['weights'][char]
     return posclades 
 
+def testTreeSuit(c1,c2):
+    # Test is two clades are compatible
+    if c1.intersection(c2) in [c1,c2,set([])]:
+        return True
+    else:
+        return False
+
 def find_conflicts(clades):
     # Return a dictionary that maps all possible clades to other possible
     # clades that they are incompatible with
-    def testTreeSuit(c1,c2):
-        # Test is two clades are compatible
-        if c1.intersection(c2) in [c1,c2,set([])]:
-            return True
-        else:
-            return False
     # Initialise dictionary
     conflicts = {}
     # Go through all clade pairs testing for conflicts
@@ -165,7 +168,7 @@ def sort_clades(clades, conflicts, posclades):
     return [x[0] for x in sorted(scores,key=lambda x:x[1])]
 
 def branch_and_bind(sorted_clades, posclades, conflicts, 
-                    optima, curscore, curtree):
+                    optima, curscore, curtree, printProgress):
     # Use the branch_and_bind method to find the optimal trees for a given
     # dataset.
     # Recursively move through the list of clades
@@ -180,7 +183,8 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
     clade = sorted_clades.pop(0)
 
     # Print progress
-    print('Current Best = ' + str(curbest) + ': ' + str(len(sorted_clades)))
+    if printProgress:
+        print('Current Best = ' + str(curbest) + ': ' + str(len(sorted_clades)))
 
     # Create a copy of the sorted clades for removal of clades incompatible
     # with current clade
@@ -205,7 +209,8 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
         # If there are more nodes to search, continue the search
         if len(keeplist) > 0:
             new_optima = branch_and_bind(keeplist, posclades, conflicts,
-                                         optima, keep_score, keep_tree)
+                                         optima, keep_score, keep_tree,
+                                         printProgress)
             if new_optima[0][0] == curbest:
                 for x in new_optima:
                     if x not in optima:
@@ -231,7 +236,8 @@ def branch_and_bind(sorted_clades, posclades, conflicts,
         # If there are more nodes to search, continue the search
         if len(sorted_clades) > 0:
             new_optima = branch_and_bind(sorted_clades, posclades, conflicts,
-                                         optima, drop_score, curtree)
+                                         optima, drop_score, curtree,
+                                         printProgress)
             if new_optima[0][0] == curbest:
                 for x in new_optima:
                     if x not in optima:
@@ -315,11 +321,13 @@ if __name__ == "__main__":
                 print('\tConflicts: ' + str(conflicts[clade]))
         # Sort the clades for optimal algorithm completion
         sorted_clades = sort_clades(posclades.keys(), conflicts, posclades)
-        # Create the initial guess for an optimal tree to set limit on bound
-        guess = build_tree_from_list(sorted_clades, conflicts, posclades)
+
         # Perform branch and bind optimization
         optima = branch_and_bind(sorted_clades, posclades, 
-                                 conflicts, [(guess[1], guess[0])], 0, [])
+                                 conflicts, 
+                                 [(data['expected_failures'],
+                                   sorted_clades)],
+                                 0, [], True)
         # Get the amount of time from start to end of optimization
         elapsed = perfc() - start_time
         # Write the results to file
