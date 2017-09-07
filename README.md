@@ -45,7 +45,7 @@ performs the following operations:
 1) Converts the data into a Nexus file for use in PAUP (state values are converted to A-Z to avoid encoding issues)
 2) Updates the PAUP templates in the PAUP template folder to use the data from the new Nexus file
 3) Runs the PAUP templates (and uses some intermediate output files to calculate weighted compatibility)
-4) Outputs the scores associated with all the found trees according to maximum parsimony and maximum compatibility as well as their strict consensus and majority rule consensus trees
+4) Outputs the majority rule consensus tree for maximum parsimony and weighted maximum compatibility (midpoint rooting is used in the output tree, but the methods actually only optimize an unrooted tree)
 
 # Makefile
 The exact commands used to generate data for the paper "A New Method for Computational Cladistics: An Afro-Asiatic Case Study" can be found in the Makefile. To replicate our analysis: 

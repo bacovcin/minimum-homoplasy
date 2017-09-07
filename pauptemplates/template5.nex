@@ -1,10 +1,6 @@
 BEGIN PAUP;
-  gettrees file=tmp_wp.trees dupTrees=eliminate mode=3;
-  deroottrees;
   gettrees file=tmp_wp_con.trees dupTrees=eliminate mode=7;
-  treeinfo;
+  roottree rootmethod=midpoint;
   savetrees file=out_wp.trees replace=yes format=newick;
-  pscores all/ ci ri rc hi compatibility=yes scorefile=out_wp.scores replace=yes displayOut=no;
-  pscores all/ single=all ci ri rc hi compatibility=yes scorefile=full_wp.scores replace=yes displayOut=no;
   QUIT;
 END;

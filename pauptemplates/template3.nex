@@ -7,6 +7,6 @@ BEGIN PAUP;
   hsearch start=current swap=tbr hold=1 nbest=100;
   filter best=yes;
   savetrees file=tmp_wp.trees replace=yes;
-  contree /majrule treeFile=tmp_wp_con.trees replace=yes semistrict=yes showTree=no;
+  contree /majrule treeFile=tmp_wp_con.trees replace=yes semistrict=no showTree=no strict=no;
   QUIT;
 END;

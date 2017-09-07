@@ -174,39 +174,25 @@ if __name__ == "__main__":
                   'paup temp5.nex')
         os.remove('tmp_comp_con.trees')
         os.remove('tmp_wp_con.trees')
-        os.remove('tmp_comp.trees')
-        os.remove('tmp_wp.trees')
         os.remove('tmp.trees')
         os.remove('temp1.nex')
         os.remove('temp2.nex')
         os.remove('temp3.nex')
         os.remove('temp4.nex')
         os.remove('temp5.nex')
-        os.rename('full_comp.scores',
-                  'outputs/'+outdir+'/comp/'+filename+'.scores')
-        scores = open('out_comp.scores').readlines()
         trees = list(Phylo.parse('out_comp.trees','newick'))
         with open('outputs/'+outdir+'/comp/'+filename+'.txt','w') as outfile:
             i = 0
             for tree in trees:
                 i += 1
-                outfile.write('Tree #'+str(i)+':\n')
-                outfile.write(scores[0])
-                outfile.write(scores[i])
                 Phylo.draw_ascii(tree,file=outfile)
-        os.remove('out_comp.scores')
         os.remove('out_comp.trees')
-        os.rename('full_wp.scores',
-                  'outputs/'+outdir+'/wmp/'+filename+'.scores')
-        scores = open('out_wp.scores').readlines()
         trees = list(Phylo.parse('out_wp.trees','newick'))
         with open('outputs/'+outdir+'/wmp/'+filename+'.txt','w') as outfile:
             i = 0
             for tree in trees:
                 i += 1
-                outfile.write('Tree #'+str(i)+':\n')
-                outfile.write(scores[0])
-                outfile.write(scores[i])
                 Phylo.draw_ascii(tree,file=outfile)
-        os.remove('out_wp.scores')
         os.remove('out_wp.trees')
+        os.remove('tmp.scores')
+        os.remove('tmp_wp.trees')
