@@ -1,5 +1,5 @@
-#Maximum Synapomorphy
-A python package for implementing a maximum synapomorphy method for finding
+# Minimum Homoplasy
+A python package for implementing a minimum homoplasy method for finding
 optimal phylogenetic trees. 
 
 # Dependencies
@@ -29,7 +29,7 @@ The data can be downloaded from this link: (http://www.cs.rice.edu/~nakhleh/CPHL
 
 The data must then be saved in the home directory of the repository as IEDATA.
 
-The python script convert\_IE\_data.py can be used to convert the data to the format used by the Maximum Synapomorphy algorithm.
+The python script convert\_IE\_data.py can be used to convert the data to the format used by the Minimum Homoplasy algorithm.
 
 ## Conversion Flags (takes the form flag=value)
 P=Weight for phonological characters
