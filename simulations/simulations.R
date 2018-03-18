@@ -8,14 +8,21 @@ data$time.ms <- round(data$time * 1000)
 data$precision = data$tp/(data$tp+data$fp)
 data$recall = data$tp/(data$tp+data$fn)
 
+pdf('median-time.pdf')
 ggplot(data,aes(ntaxa,time,colour=factor(nchar),linetype=factor(nchar)))+
   stat_summary(fun.y=median,geom='point')+
   stat_summary(fun.y=median,geom='line')+
   scale_x_continuous(name='Number of Taxa')+
   scale_y_continuous(name='Median Time (sec)')+
   scale_linetype_discrete(name='Number of Characters')+
-  scale_colour_discrete(name='Number of Characters')
+  scale_colour_discrete(name='Number of Characters')+
+  theme(axis.text.x=element_text(size=18),
+		axis.text.y=element_text(size=18),
+		axis.title=element_text(size=18),
+		legend.text=element_text(size=18))
+dev.off()
 
+pdf('maximum-time.pdf')
 ggplot(data,aes(ntaxa,time/60,colour=factor(nchar),linetype=factor(nchar)))+
   stat_summary(fun.y=max,geom='point')+
   stat_summary(fun.y=max,geom='line')+
@@ -23,11 +30,12 @@ ggplot(data,aes(ntaxa,time/60,colour=factor(nchar),linetype=factor(nchar)))+
   scale_x_continuous(name='Number of Taxa')+
   scale_y_continuous(name='Max Time (min)')+
   scale_linetype_discrete(name='Number of Characters')+
-  scale_colour_discrete(name='Number of Characters')
-
-ggplot(subset(data,ntaxa>=17),aes(possible_clade_num,log(time)))+
-  stat_summary(fun.y=median,geom='line')#+
-  #facet_grid(~ntaxa)
+  scale_colour_discrete(name='Number of Characters')+
+  theme(axis.text.x=element_text(size=18),
+		axis.text.y=element_text(size=18),
+		axis.title=element_text(size=18),
+		legend.text=element_text(size=18))
+dev.off()
 
 library(MASS)
 mod <- lm(data=data,log(time)~possible_clade_num+nchar*ntaxa)
@@ -46,21 +54,33 @@ group_by(data,ntaxa,nchar)%>%summarize(pmin=lowerquart(precision),
                                        rmean=mean(recall),
                                        rmax=upperquart(recall))
 
+pdf(file="precision.pdf")
 ggplot(data,aes(ntaxa,precision,colour=factor(nchar),linetype=factor(nchar)))+
   stat_summary(fun.y=mean,geom='point')+
   stat_summary(fun.y=mean,geom='line')+
   scale_x_continuous(name='Number of Taxa')+
   scale_y_continuous(name='Mean Precision')+
   scale_linetype_discrete(name='Number of Characters')+
-  scale_colour_discrete(name='Number of Characters')
+  scale_colour_discrete(name='Number of Characters')+
+  theme(axis.text.x=element_text(size=18),
+		axis.text.y=element_text(size=18),
+		axis.title=element_text(size=18),
+		legend.text=element_text(size=18))
+dev.off()
 
+pdf(file="recall.pdf")
 ggplot(data,aes(ntaxa,recall,colour=factor(nchar),linetype=factor(nchar)))+
   stat_summary(fun.y=mean,geom='point')+
   stat_summary(fun.y=mean,geom='line')+
   scale_x_continuous(name='Number of Taxa')+
   scale_y_continuous(name='Mean Recall')+
   scale_linetype_discrete(name='Number of Characters')+
-  scale_colour_discrete(name='Number of Characters')
+  scale_colour_discrete(name='Number of Characters')+
+  theme(axis.text.x=element_text(size=18),
+		axis.text.y=element_text(size=18),
+		axis.title=element_text(size=18),
+		legend.text=element_text(size=18))
+dev.off()
 
 data$isConsensus <- factor('Not Consensus')
 levels(data$isConsensus) <- c('Not Consensus','Consensus')

@@ -1,6 +1,6 @@
 BEGIN PAUP;
   gettrees file=tmp_wp_con.trees dupTrees=eliminate mode=7;
   roottree rootmethod=midpoint;
-  savetrees file=out_wp.trees replace=yes format=newick;
+  savetrees file=out_wp_con.trees replace=yes format=newick;
   QUIT;
 END;

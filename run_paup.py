@@ -192,7 +192,16 @@ if __name__ == "__main__":
             i = 0
             for tree in trees:
                 i += 1
+                outfile.write('Tree '+str(i)+':\n')
                 Phylo.draw_ascii(tree,file=outfile)
         os.remove('out_wp.trees')
+        os.rename('wp_scores.txt','outputs/'+outdir+'/wmp/'+filename+'_scores.txt')
+        trees = list(Phylo.parse('out_wp_con.trees','newick'))
+        with open('outputs/'+outdir+'/wmp/'+filename+'_con.txt','w') as outfile:
+            i = 0
+            for tree in trees:
+                i += 1
+                outfile.write('Tree '+str(i)+':\n')
+                Phylo.draw_ascii(tree,file=outfile)
+        os.remove('out_wp_con.trees')
         os.remove('tmp.scores')
-        os.remove('tmp_wp.trees')
